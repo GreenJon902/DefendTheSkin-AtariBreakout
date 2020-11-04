@@ -68,4 +68,5 @@ bigBrickRacketFitAccuracy = 0.05
 bigBrickMoveTime = 0.5
 bigBrickFlashTime = 3
 bigBrickFlashTransition = "out_expo"
-heartHeight = 1 - bgSkinTop
+heartSize = 0.1
+healthDistance = 0.01

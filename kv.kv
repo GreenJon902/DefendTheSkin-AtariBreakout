@@ -88,19 +88,17 @@
             size: self.size
 
 <Health>:
-    StackLayout:
-        orientation: "lr-tb"
-        pos_hint: {"top": 1, "right": 1}
-        size_hint_y: configurables.heartHeight
+    Image:
+        id: heart_1
+        source: "Resources/heart.png"
+        allow_stretch: True
 
-        Image:
-            id: heart_1
-            source: "Resources/heart.png"
+    Image:
+        id: heart_2
+        source: "Resources/heart.png"
+        allow_stretch: True
 
-        Image:
-            id: heart_2
-            source: "Resources/heart.png"
-
-        Image:
-            id: heart_3
-            source: "Resources/heart.png"
+    Image:
+        id: heart_3
+        source: "Resources/heart.png"
+        allow_stretch: True
