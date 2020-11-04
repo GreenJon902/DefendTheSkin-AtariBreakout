@@ -1,0 +1,85 @@
+#: import configurables configurables
+
+<MainMenuScreen>:
+    id: MainMenuScreen
+
+    Background:
+        id: bg
+        size_hint: 1, 1
+
+    FloatLayout:
+        pos_hint: {"x":0, "top": 1}
+        Label:
+            text: "DefendTheSkin"
+            font_name: "Resources/ComicSans.ttf"
+            font_size: 50
+            bold: True
+
+            pos_hint: {"x":0, "top": 1.05}
+            size_hint: 1, 0.2
+
+        Button:
+            id: PlayButton
+
+            text: "Play"
+            font_name: "Resources/ComicSans.ttf"
+            font_size: 40
+            bold: True
+
+            background_color: 0, 0, 0, 0
+
+            pos_hint: configurables.playButtonPos
+            size_hint: configurables.playButtonSize
+
+            on_release: MainMenuScreen.start_game()
+
+
+<PlayScreen>:
+    id: PlayScreen
+
+    Background:
+        id: bg
+        size_hint: 1, 1
+        playing: True
+
+    AtariBricks:
+        id: AtariBricks
+
+    Ball:
+        id: Ball
+
+    BigBrick:
+        id: BigBrick
+        size_hint: configurables.bigBrickWidth, configurables.bigBrickHeight
+        pos_hint: {"center_x": 0.5, "y": configurables.bigBrickHeight * -1}
+
+    Racket:
+        id: Racket
+
+
+<Racket>:
+    pos_hint: {"y": configurables.racketY}
+    on_size: self.center_x = self.parent.width / 2
+    size_hint: configurables.racketSize
+
+    canvas:
+        Color:
+            rgb: configurables.racketColor
+
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+<Ball>:
+    y: configurables.ballY * self.parent.height
+    center_x: self.parent.center_x
+
+    size_hint: None, None
+
+    canvas:
+        Color:
+            rgb: configurables.ballColor
+
+        Rectangle:
+            pos: self.pos
+            size: self.size
