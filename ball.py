@@ -54,6 +54,7 @@ class Ball(Widget):
 
         self.racket = None
         self.hideBrickFunc = None
+        self.looseHeart = None
         self.can_bounce = True
         self.atariGrid = {}
         self.atariGridXCoords = {}
@@ -152,6 +153,11 @@ class Ball(Widget):
         elif self.right >= Window.width:
             self.direction = (360 - self.direction) % 360
             self.right = Window.width
+
+        # Bottom
+        if self.y <= 0:
+            self.looseHeart()
+            self.center = self.parent.width / 2, self.parent.height / 2
 
     def remove(self, x):
         self.atariGrid[x + 1] -= 1

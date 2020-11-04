@@ -70,3 +70,5 @@ bigBrickFlashTime = 3
 bigBrickFlashTransition = "out_expo"
 heartSize = 0.1
 healthDistance = 0.01
+healthGrowSize = 1.5
+healthLeaveTime = 0.5

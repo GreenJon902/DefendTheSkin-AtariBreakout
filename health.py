@@ -1,7 +1,8 @@
+from kivy.animation import Animation
 from kivy.properties import NumericProperty
 from kivy.uix.widget import Widget
 
-from configurables import heartSize, healthDistance
+from configurables import heartSize, healthDistance, healthLeaveTime, healthGrowSize
 
 
 class Health(Widget):
@@ -38,10 +39,37 @@ class Health(Widget):
         self.ids["heart_3"].texture.mag_filter = 'nearest'
 
         if self.health == 2:
-            self.ids["heart_3"].visible = False
+            a = Animation(opacity=0,
+                          width=self.parent.width * heartSize * healthGrowSize,
+                          height=self.parent.width * heartSize * healthGrowSize,
+                          x=self.ids["heart_3"].x - ((self.parent.width * heartSize * healthGrowSize) / 4),
+                          y=self.ids["heart_3"].y - ((self.parent.width * heartSize * healthGrowSize) / 4),
+                          duration=healthLeaveTime)
+
+            a.start(self.ids["heart_3"])
 
         elif self.health == 1:
-            self.ids["heart_2"].visible = False
+            a = Animation(opacity=0,
+                          width=self.parent.width * heartSize * healthGrowSize,
+                          height=self.parent.width * heartSize * healthGrowSize,
+                          x=self.ids["heart_2"].x - ((self.parent.width * heartSize * healthGrowSize) / 4),
+                          y=self.ids["heart_2"].y - ((self.parent.width * heartSize * healthGrowSize) / 4),
+                          duration=healthLeaveTime)
+
+            a.start(self.ids["heart_2"])
 
         elif self.health == 0:
-            self.ids["heart_1"].visible = False
+            a = Animation(opacity=0,
+                          width=self.parent.width * heartSize * healthGrowSize,
+                          height=self.parent.width * heartSize * healthGrowSize,
+                          x=self.ids["heart_1"].x - ((self.parent.width * heartSize * healthGrowSize) / 4),
+                          y=self.ids["heart_1"].y - ((self.parent.width * heartSize * healthGrowSize) / 4),
+                          duration=healthLeaveTime)
+
+            a.start(self.ids["heart_1"])
+
+        print("fee", self.health)
+
+    def loose(self):
+        self.health -= 1
+        print("fe")

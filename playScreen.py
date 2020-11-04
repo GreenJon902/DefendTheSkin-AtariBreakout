@@ -19,6 +19,8 @@ class PlayScreen(Screen):
         self.health = self.ids["Health"]
         self.bind(size=self.health.update)
 
+        self.ball.looseHeart = self.health.loose
+
     def on_enter(self):
         self.atariBricks.open()
         self.ball.update_size()
