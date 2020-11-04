@@ -9,6 +9,7 @@ from ball import Ball
 from background import Background
 from racket import Racket
 from bigBrick import BigBrick
+from health import Health
 
 
 class ScreenManager(Sm):
