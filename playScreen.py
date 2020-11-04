@@ -40,4 +40,3 @@ class PlayScreen(Screen):
     def brick_hit(self, brickX, brickY):
         self.atariBricks.darken_brick(brickX, brickY, self.bigBrick.exit)
         self.bigBrick.append_to_queue((brickX, brickY))
-ghs
