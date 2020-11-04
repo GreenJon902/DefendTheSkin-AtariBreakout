@@ -1,6 +1,6 @@
 prePlayToPlayDelay = 0.5
 fadeLength = 0.5
-bgBloodColor = 1, 0, 0
+bgBloodColor = 0.7, 0, 0
 bgSkinColor1 = 1, 0.70196078431, 0
 bgSkinColor2 = 0.94509803921, 0.66274509803, 0
 bgSkinBottom = 0.7
