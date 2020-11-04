@@ -1,5 +1,5 @@
 from kivy.uix.widget import Widget
 
 
-class health(Widget):
+class Health(Widget):
     pass
