@@ -6,7 +6,7 @@ from configurables import heartSize, healthDistance, healthLeaveTime, healthGrow
 
 
 class Health(Widget):
-    health = NumericProperty(1)
+    health = NumericProperty(0)
 
     def __init__(self, *args, **kwargs):
         super(Health, self).__init__(*args, **kwargs)

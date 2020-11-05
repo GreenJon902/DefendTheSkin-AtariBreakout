@@ -11,7 +11,7 @@
         pos_hint: {"x":0, "top": 1}
         Label:
             text: "Defend The Skin"
-            font_name: "Resources/minecraft.ttf"
+            font_name: configurables.bgFontName
             font_size: 50
             bold: True
 
@@ -22,7 +22,7 @@
             id: PlayButton
 
             text: "Play"
-            font_name: "Resources/minecraft.ttf"
+            font_name: configurables.bgFontName
             font_size:40
             bold: True
 
@@ -60,6 +60,14 @@
         id: Health
 
 
+<ScoreScreen>:
+    id: ScoreScreen
+
+    Background:
+        id: bg
+        size_hint: 1, 1
+
+
 <Racket>:
     pos_hint: {"y": configurables.racketY}
     on_size: self.center_x = self.parent.width / 2
@@ -72,6 +80,7 @@
         Rectangle:
             pos: self.pos
             size: self.size
+
 
 <Ball>:
     y: configurables.ballY * self.parent.height
@@ -86,6 +95,7 @@
         Rectangle:
             pos: self.pos
             size: self.size
+
 
 <Health>:
     Image:
