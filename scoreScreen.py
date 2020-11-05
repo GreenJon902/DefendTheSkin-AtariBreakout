@@ -9,3 +9,6 @@ class ScoreScreen(Screen):
 
     def on_pre_enter(self, *args):
         self.ids["Score"].text = "Your Score Is {}".format(self.score)
+
+    def next(self):
+        self.parent.current = "MainMenu"

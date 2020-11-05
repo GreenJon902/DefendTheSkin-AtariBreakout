@@ -37,6 +37,7 @@ class PlayScreen(Screen):
             pos = self.bigBrick.exit()
             self.ball.remove(pos[0])
             self.atariBricks.hide_brick(*pos)
+            self.parent.score += 1
 
 
         else:

@@ -17,6 +17,8 @@ class ScreenManager(Sm):
     def __init__(self):
         super(ScreenManager, self).__init__()
 
+        self.score = 0
+
         self.MainMenu = MainMenuScreen(name="MainMenu")
         self.add_widget(self.MainMenu)
 
@@ -30,7 +32,7 @@ class ScreenManager(Sm):
         self.transition = FadeTransition(duration=fadeLength)
 
     def dead(self, _=None, _2=None, _3=None):
-        self.ScoreScreen.score = 21
+        self.ScoreScreen.score = self.score
         self.current = "Score"
 
         self.remove_widget(self.PlayScreen)

@@ -90,6 +90,22 @@
             size_hint: configurables.playButtonSize
 
 
+        Button:
+            id: PlayAgainButton
+
+            text: "Click To Play Again"
+            font_name: configurables.bgFontName
+            font_size:40
+            bold: True
+
+            background_color: 0, 0, 0, 0
+
+            pos_hint: {"x": 0, "y": 0}
+            size_hint: 1, 1
+
+            on_release: ScoreScreen.next()
+
+
 <Racket>:
     pos_hint: {"y": configurables.racketY}
     on_size: self.center_x = self.parent.width / 2
