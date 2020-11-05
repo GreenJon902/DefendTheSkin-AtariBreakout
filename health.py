@@ -73,6 +73,6 @@ class Health(Widget):
 
     def loose(self):
         self.health -= 1
-
-        return [False if self.health <= 0 else True]
+        i = False if self.health <= 0 else True
+        return i
 
