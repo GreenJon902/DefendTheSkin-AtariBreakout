@@ -67,6 +67,28 @@
         id: bg
         size_hint: 1, 1
 
+    FloatLayout:
+        pos_hint: {"x":0, "top": 1}
+        Label:
+            text: "You Loose"
+            font_name: configurables.bgFontName
+            font_size: 50
+            bold: True
+
+            pos_hint: {"x":0, "top": 1.05}
+            size_hint: 1, 0.2
+
+        Label:
+            id: Score
+
+            text: "Your Score Is 0"
+            font_name: configurables.bgFontName
+            font_size:40
+            bold: True
+
+            pos_hint: configurables.playButtonPos
+            size_hint: configurables.playButtonSize
+
 
 <Racket>:
     pos_hint: {"y": configurables.racketY}

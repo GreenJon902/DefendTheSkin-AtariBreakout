@@ -30,6 +30,7 @@ class ScreenManager(Sm):
         self.transition = FadeTransition(duration=fadeLength)
 
     def dead(self, _=None, _2=None, _3=None):
+        self.ScoreScreen.score = 21
         self.current = "Score"
 
         self.remove_widget(self.PlayScreen)
