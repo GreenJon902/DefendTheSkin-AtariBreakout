@@ -62,7 +62,7 @@ class Ball(Widget):
         self.atariGridXWidth = 0
         self.atariGridYCoords = {}
 
-        for brickX in range(atariGridShape[0] + 1):  # +1 because of hitboxes things
+        for brickX in range(atariGridShape[0]):
             self.atariGrid[brickX] = atariGridShape[1]
 
     def update_size(self, _=None, _2=None):
@@ -115,6 +115,8 @@ class Ball(Widget):
 
         # Racket
         if self.can_bounce and self.collide_widget(self.racket):
+            self.can_bounce = False
+
             offset = (self.center_x - self.racket.center_x) / (self.racket.width / 2)
             self.bounce(offset)
 
@@ -126,18 +128,21 @@ class Ball(Widget):
         if self.top >= self.parent.height * bgSkinBottom:
             # AtariGrid Y
             shouldBreak = False
+            print(self.atariGrid)
 
             for brickX in range(atariGridShape[0]):
                 for brickY in range(self.atariGrid[brickX]):
                     x = self.atariGridXCoords[brickX]
                     x2 = self.atariGridRightCoords[brickX]
-                    y = self.atariGridYCoords[brickY]
+                    y = self.atariGridYCoords[atariGridShape[1] - brickY - 1]
+                    print(x, x2, y, atariGridShape[1] - brickY - 1)
 
                     if ((x <= self.x <= x2) or (x <= self.right <= x2)) and self.top >= y:
                         shouldBreak = True
                         self.top = y-1
-                        self.hideBrickFunc(brickX, brickY)
-                        self.atariGrid[brickX] -= 1
+                        self.hideBrickFunc(brickX, atariGridShape[1] - brickY - 1)
+
+                        print("fee")
 
                         self.bounce(0)
 
@@ -161,5 +166,6 @@ class Ball(Widget):
 
 
     def remove(self, x):
-        self.atariGrid[x + 1] -= 1
+        print(self.atariGrid, 343)
+        self.atariGrid[x] -= 1
 
