@@ -156,8 +156,9 @@ class Ball(Widget):
 
         # Bottom
         if self.y <= 0:
-            self.looseHeart()
-            self.center = self.parent.width / 2, self.parent.height / 2
+            if self.looseHeart():
+                self.center = self.parent.width / 2, self.parent.height / 2
+
 
     def remove(self, x):
         self.atariGrid[x + 1] -= 1

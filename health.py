@@ -11,6 +11,8 @@ class Health(Widget):
     def __init__(self, *args, **kwargs):
         super(Health, self).__init__(*args, **kwargs)
 
+        self.resetCallback = None
+
         self.bind(health=self.update)
 
     def update(self, _=None, _2=None, _3=None):
@@ -48,7 +50,7 @@ class Health(Widget):
 
             a.start(self.ids["heart_3"])
 
-        elif self.health == 1:
+        if self.health == 1:
             a = Animation(opacity=0,
                           width=self.parent.width * heartSize * healthGrowSize,
                           height=self.parent.width * heartSize * healthGrowSize,
@@ -58,18 +60,19 @@ class Health(Widget):
 
             a.start(self.ids["heart_2"])
 
-        elif self.health == 0:
+        if self.health == 0:
             a = Animation(opacity=0,
                           width=self.parent.width * heartSize * healthGrowSize,
                           height=self.parent.width * heartSize * healthGrowSize,
                           x=self.ids["heart_1"].x - ((self.parent.width * heartSize * healthGrowSize) / 4),
                           y=self.ids["heart_1"].y - ((self.parent.width * heartSize * healthGrowSize) / 4),
                           duration=healthLeaveTime)
-
+            a.bind(on_complete=self.resetCallback)
             a.start(self.ids["heart_1"])
 
-        print("fee", self.health)
 
     def loose(self):
         self.health -= 1
-        print("fe")
+
+        return [False if self.health <= 0 else True]
+
