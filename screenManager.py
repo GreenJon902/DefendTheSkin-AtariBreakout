@@ -1,4 +1,3 @@
-from kivy.clock import Clock
 from kivy.uix.screenmanager import ScreenManager as Sm, FadeTransition
 
 from configurables import fadeLength
@@ -21,10 +20,15 @@ class ScreenManager(Sm):
         self.add_widget(self.MainMenu)
 
         self.PlayScreen = PlayScreen(name="Play")
-        self.PlayScreen.ids["Health"].resetCallback = self.reset
+        self.PlayScreen.ids["Health"].dead = self.dead
         self.add_widget(self.PlayScreen)
 
         self.transition = FadeTransition(duration=fadeLength)
 
-    def reset(self, _=None, _2=None, _3=None):
-        print(self.PlayScreen.ids)
+    def dead(self, _=None, _2=None, _3=None):
+        self.current = "MainMenu"
+
+        self.remove_widget(self.PlayScreen)
+        self.PlayScreen = PlayScreen(name="Play")
+        self.PlayScreen.ids["Health"].dead = self.dead
+        self.add_widget(self.PlayScreen)

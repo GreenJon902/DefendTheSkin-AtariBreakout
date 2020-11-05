@@ -6,12 +6,12 @@ from configurables import heartSize, healthDistance, healthLeaveTime, healthGrow
 
 
 class Health(Widget):
-    health = NumericProperty(3)
+    health = NumericProperty(1)
 
     def __init__(self, *args, **kwargs):
         super(Health, self).__init__(*args, **kwargs)
 
-        self.resetCallback = None
+        self.dead = None
 
         self.bind(health=self.update)
 
@@ -67,7 +67,7 @@ class Health(Widget):
                           x=self.ids["heart_1"].x - ((self.parent.width * heartSize * healthGrowSize) / 4),
                           y=self.ids["heart_1"].y - ((self.parent.width * heartSize * healthGrowSize) / 4),
                           duration=healthLeaveTime)
-            a.bind(on_complete=self.resetCallback)
+            a.bind(on_complete=self.dead)
             a.start(self.ids["heart_1"])
 
 
@@ -75,4 +75,3 @@ class Health(Widget):
         self.health -= 1
         i = False if self.health <= 0 else True
         return i
-

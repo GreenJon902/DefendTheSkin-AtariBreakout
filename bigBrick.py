@@ -30,10 +30,6 @@ class BigBrick(Widget):
         self.swipeDownCallback = None
         self.notSwipeDowned = True
 
-    def enter(self, base_widget):
-        self.append_to_queue((1, 3))
-        self.append_to_queue((2, 2))
-
     def update_canvas(self, _=None, _1=None, _2=None):
         self.canvas.clear()
 

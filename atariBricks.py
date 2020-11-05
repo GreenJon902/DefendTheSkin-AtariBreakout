@@ -71,7 +71,7 @@ class AtariBricks(Widget):
         Clock.schedule_once(self.open_brick, brickOpeningDelay)
 
     def open_brick(self, _=None, _2=None):
-        self.openingBrick.y = self.get_root_window().height
+        self.openingBrick.y = self.parent.height
 
         if self.openedTimes == self.openedTimesMax:
             self.hasOpened = True
@@ -95,7 +95,7 @@ class AtariBricks(Widget):
                 pass
 
     def _open_brick(self, _=None):
-        a = Animation(y=self.get_root_window().height * atariGridPos["y"], duration=brickFallTime,
+        a = Animation(y=self.parent.height * atariGridPos["y"], duration=brickFallTime,
                       t=brickFallTransition)
         a.bind(on_complete=self.open_brick)
         a.bind(on_progress=self.update_canvas)
@@ -117,3 +117,4 @@ class AtariBricks(Widget):
         self.atariGrid[brickX][brickY]["visible"] = False
 
         self.update_canvas()
+

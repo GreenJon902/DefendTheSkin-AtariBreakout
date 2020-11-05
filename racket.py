@@ -76,3 +76,6 @@ class Racket(Widget):
         self.canMove = True
 
         self.pos_hint["y"] = racketY
+
+    def reset(self):
+        self.center_x = self.parent.width / 2
