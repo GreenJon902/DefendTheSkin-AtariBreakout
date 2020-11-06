@@ -5,9 +5,7 @@ from random import randint
 from kivy.animation import Animation
 from kivy.clock import Clock
 from kivy.core.window import Window
-from kivy.properties import NumericProperty, ReferenceListProperty
 from kivy.uix.widget import Widget
-from kivy.vector import Vector
 
 from configurables import ballSize, bgSkinBottom, atariGridPos, atariGridSize, atariGridShape, \
     ballSpeedUp, ballStartSpeed
