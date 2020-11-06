@@ -142,8 +142,6 @@ class Ball(Widget):
                         self.top = y-1
                         self.hideBrickFunc(brickX, atariGridShape[1] - brickY - 1)
 
-                        print("fee")
-
                         self.bounce(0)
 
 
@@ -166,6 +164,5 @@ class Ball(Widget):
 
 
     def remove(self, x):
-        print(self.atariGrid, 343)
         self.atariGrid[x] -= 1
 
