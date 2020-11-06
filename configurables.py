@@ -53,6 +53,7 @@ ballY = 0.3
 ballSize = 0.05
 ballSpeedUp = 1.05
 ballStartSpeed = 3
+ballRegenTime = 1
 racketY = 0.1
 racketColor = 1, 1, 1
 racketSize = 0.2, 0.05

@@ -8,7 +8,7 @@ from kivy.core.window import Window
 from kivy.uix.widget import Widget
 
 from configurables import ballSize, bgSkinBottom, atariGridPos, atariGridSize, atariGridShape, \
-    ballSpeedUp, ballStartSpeed
+    ballSpeedUp, ballStartSpeed, ballRegenTime
 
 
 def round_down_to_set_out_puts(n, outputs):
@@ -156,9 +156,11 @@ class Ball(Widget):
         # Bottom
         if self.y <= 0:
             if self.looseHeart():
-                self.center = self.parent.width / 2, self.parent.height / 2
+                Clock.schedule_once(self.regen, ballRegenTime)
 
 
     def remove(self, x):
         self.atariGrid[x] -= 1
 
+    def regen(self, _=None):
+        self.center = self.parent.width / 2, self.parent.height / 2
