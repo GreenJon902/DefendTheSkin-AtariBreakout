@@ -5,8 +5,9 @@ bgSkinColor1 = 1, 0.70196078431, 0
 bgSkinColor2 = 0.94509803921, 0.66274509803, 0
 bgSkinBottom = 0.7
 bgSkinTop = 0.9
-bgFontName = "Resources/Arcade2.ttf"
+bgFontName = "Resources/minecraft.ttf"
 bgExplainerTextY = 0.5
+bgExplainerTextWidth = 0.9
 atariGridShape = 6, 5
 atariColorGrid = [
     [0.7, 0.0, 0.0],

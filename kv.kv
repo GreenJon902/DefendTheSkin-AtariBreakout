@@ -34,17 +34,17 @@
             on_release: MainMenuScreen.start_game()
 
         Label:
-            text: "How To Play And How Is It About The Skin Immune System? \n The aim of the game is to destroy all the bricks while not hitting any antibodies. You do this by bouncing a ball ( virus ) against the bricks ( cells ) and the racket that you control, you also have to slide the racket into the zoomed in part of the cell that will appear when the ball hits a brick like how a virus has to attach itself to the proteins on the cell to get inside of it so it can start to reproduce"
+            text: "How To Play And How Is It About The Skin Immune System? \n \n The aim of the game is to destroy all the bricks while not hitting any antibodies. You do this by bouncing a ball ( virus ) against the bricks ( cells ) and the racket that you control, you also have to slide the racket into the zoomed in part of the cell that will appear when the ball hits a brick like how a virus has to attach itself to the proteins on the cell to get inside of it so it can start to reproduce"
             font_name: configurables.bgFontName
             font_size: 25
             bold: True
             valign: "top"
             halign: "center"
             multiline: True
-            text_size: self.width, None
+            text_size: self.width * configurables.bgExplainerTextWidth, self.height
 
             pos_hint: {"x":0, "top": configurables.bgExplainerTextY}
-            size_hint: 1, 0
+            size_hint: 1, 1
 
 
 <PlayScreen>:
