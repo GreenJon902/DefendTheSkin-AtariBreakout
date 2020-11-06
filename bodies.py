@@ -1,8 +1,5 @@
 import math
-import sys
-import timeit
-from random import random, randint
-import time
+from random import random
 
 from kivy import Logger
 from kivy.clock import Clock
