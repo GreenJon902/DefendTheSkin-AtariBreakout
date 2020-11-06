@@ -53,7 +53,8 @@ class Ball(Widget):
         self.racket = None
         self.hideBrickFunc = None
         self.looseHeart = None
-        self.can_bounce = True
+        self.canBounce = True
+        self.canLooseHealth = True
         self.atariGrid = {}
         self.atariGridXCoords = {}
         self.atariGridRightCoords = {}
@@ -112,16 +113,16 @@ class Ball(Widget):
         # Hit Boxes YAY
 
         # Racket
-        if self.can_bounce and self.collide_widget(self.racket):
-            self.can_bounce = False
+        if self.canBounce and self.collide_widget(self.racket):
+            self.canBounce = False
 
             offset = (self.center_x - self.racket.center_x) / (self.racket.width / 2)
             self.bounce(offset)
 
             #self.velocity_y *= -1
 
-        elif not self.collide_widget(self.racket) and not self.can_bounce:
-            self.can_bounce = True
+        elif not self.collide_widget(self.racket) and not self.canBounce:
+            self.canBounce = True
 
         if self.top >= self.parent.height * bgSkinBottom:
             # AtariGrid Y
@@ -154,8 +155,9 @@ class Ball(Widget):
             self.right = Window.width
 
         # Bottom
-        if self.y <= 0:
+        if self.y <= 0 and self.canLooseHealth:
             if self.looseHeart():
+                self.canLooseHealth = False
                 Clock.schedule_once(self.regen, ballRegenTime)
 
 
@@ -163,4 +165,5 @@ class Ball(Widget):
         self.atariGrid[x] -= 1
 
     def regen(self, _=None):
+        self.canLooseHealth = True
         self.center = self.parent.width / 2, self.parent.height / 2

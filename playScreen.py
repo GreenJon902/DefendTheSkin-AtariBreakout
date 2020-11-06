@@ -13,6 +13,7 @@ class PlayScreen(Screen):
 
         self.racket = self.ids["Racket"]
         self.racket.doesBrickFitCallback = self.brick_fit
+        self.racket.bigBrick = self.bigBrick
 
         self.atariBricks = self.ids["AtariBricks"]
 

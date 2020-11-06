@@ -66,9 +66,7 @@ class BigBrick(Widget):
             if self.collide_point(*touch.pos) and self.notSwipeDowned:
                 self.notSwipeDowned = False
 
-                self.swipeDownCallback(self.brickQueue[0]["holePos"] + self.x,
-                                       self.height - (self.parent.height * racketSize[1]),
-                                       self.height)
+                self.swipeDownCallback(*self.get_queue_and_ys())
 
             elif not self.collide_point(*touch.pos) and not self.notSwipeDowned:
                 self.notSwipeDowned = True
@@ -127,3 +125,6 @@ class BigBrick(Widget):
                       transition=bigBrickFlashTransition)
         a.bind(on_progress=self.update_canvas)
         a.start(self)
+
+    def get_queue_and_ys(self):
+        return self.brickQueue[0]["holePos"] + self.x, self.height - (self.parent.height * racketSize[1]), self.height
