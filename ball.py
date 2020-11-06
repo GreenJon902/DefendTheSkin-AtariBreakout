@@ -128,14 +128,12 @@ class Ball(Widget):
         if self.top >= self.parent.height * bgSkinBottom:
             # AtariGrid Y
             shouldBreak = False
-            print(self.atariGrid)
 
             for brickX in range(atariGridShape[0]):
                 for brickY in range(self.atariGrid[brickX]):
                     x = self.atariGridXCoords[brickX]
                     x2 = self.atariGridRightCoords[brickX]
                     y = self.atariGridYCoords[atariGridShape[1] - brickY - 1]
-                    print(x, x2, y, atariGridShape[1] - brickY - 1)
 
                     if ((x <= self.x <= x2) or (x <= self.right <= x2)) and self.top >= y:
                         shouldBreak = True
