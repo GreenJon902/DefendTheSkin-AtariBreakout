@@ -2,8 +2,8 @@ from kivy.app import App
 from kivy.core.window import Window
 from kivy.lang import Builder
 
-from screenManager import ScreenManager
 from audio import Audio
+from screenManager import ScreenManager
 
 
 class DefendTheSkin(App):
@@ -12,14 +12,15 @@ class DefendTheSkin(App):
         self.audio = Audio()
 
     def build(self):
-        Window.minimum_width = 500
-        Window.minimum_height = 500
+        Window.minimum_width = 650
+        Window.minimum_height = 670
 
         Window.size = 700, 1000
 
         self.audio.play()
 
         return ScreenManager()
+
 
 
 if __name__ == '__main__':

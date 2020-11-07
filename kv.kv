@@ -33,19 +33,76 @@
 
             on_release: MainMenuScreen.start_game()
 
-        Label:
-            text: "How To Play? \n \n The aim of the game is to make a path through the cells using the virus which you bounce with your racket. There will also be blue antibodies flying around and if they touch the racket then you loose a life, but don't worry both the virus and some special balls will destroy anti bodies on impact. These special balls explode from cells that you destroy. To destroy a cell you simply have to hit it with the virus and then slide the racket into the zoomed in part of the cell that will appear at the bottom of your screen."
-            font_name: configurables.bgFontName
-            font_size: 25
-            bold: True
-            valign: "top"
-            halign: "center"
-            multiline: True
-            text_size: self.width * configurables.bgExplainerTextWidth, self.height
+        BoxLayout:
+            orientation: "vertical"
+            padding: [10, 10]
+            spacing: 10
 
-            pos_hint: {"x":0, "top": configurables.bgExplainerTextY}
-            size_hint: 1, 1
+            pos_hint: {"x": 0, "top": configurables.bgSkinBottom}
+            size_hint: 1, 1-configurables.bgSkinBottom
 
+            Button:
+                id: HowToPlayButton
+
+                text: "How To Play"
+                font_name: configurables.bgFontName
+                font_size: 40
+                bold: True
+
+                background_color: 0, 0, 0, 0
+                color: 0, 0, 0
+
+                on_release: print("fe")
+
+                canvas.before:
+                    Color:
+                        rgb: 1, 1, 1
+
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+
+            Button:
+                id: HowItsRelatedToTheSkinImmuneSystemScreen
+
+                text: "How Its Related To The Skin Immune System"
+                font_name: configurables.bgFontName
+                font_size: 25
+                bold: True
+
+                background_color: 0, 0, 0, 0
+                color: 0, 0, 0
+
+                on_release: print("fe")
+
+                canvas.before:
+                    Color:
+                        rgb: 1, 1, 1
+
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+
+            Button:
+                id: FurtherReadingButton
+
+                text: "Further Reading"
+                font_name: configurables.bgFontName
+                font_size: 40
+                bold: True
+
+                background_color: 0, 0, 0, 0
+                color: 0, 0, 0
+
+                on_release: print("fe")
+
+                canvas.before:
+                    Color:
+                        rgb: 1, 1, 1
+
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
 
 <PlayScreen>:
     id: PlayScreen
@@ -71,6 +128,21 @@
 
     Health:
         id: Health
+
+
+<TextScreen>:
+    Label:
+        text: self.parent.text
+        font_name: configurables.bgFontName
+        font_size: 25
+        bold: True
+        valign: "center"
+        halign: "center"
+        multiline: True
+        text_size: self.width * configurables.bgExplainerTextWidth, self.height
+
+        pos_hint: {"x":0, "top": 1}
+        size_hint: 1, 1
 
 
 <ScoreScreen>:

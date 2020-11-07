@@ -1,9 +1,11 @@
 from kivy.uix.screenmanager import ScreenManager as Sm, FadeTransition
 
-from configurables import fadeLength
+from configurables import fadeLength, howToPlayScreenText, furtherReadingScreenText, \
+    howItsRelatedToTheSkinImmuneSystemScreenText, textPadding
 from mainMenuScreen import MainMenuScreen
 from playScreen import PlayScreen
 from scoreScreen import ScoreScreen
+from textScreen import FurtherReadingScreen, HowToPlayScreen, HowItsRelatedToTheSkinImmuneSystemScreen
 
 from atariBricks import AtariBricks
 from ball import Ball
@@ -28,6 +30,14 @@ class ScreenManager(Sm):
 
         self.ScoreScreen = ScoreScreen(name="Score")
         self.add_widget(self.ScoreScreen)
+
+        self.HowToPlayScreen = HowToPlayScreen(name="Score", text=howToPlayScreenText)
+        self.add_widget(self.HowToPlayScreen)
+        self.FurtherReadingScreen = FurtherReadingScreen(name="Score", text=furtherReadingScreenText)
+        self.add_widget(self.FurtherReadingScreen)
+        self.HowItsRelatedToTheSkinImmuneSystemScreen = \
+            HowItsRelatedToTheSkinImmuneSystemScreen(name="Score", text=howItsRelatedToTheSkinImmuneSystemScreenText)
+        self.add_widget(self.HowItsRelatedToTheSkinImmuneSystemScreen)
 
         self.transition = FadeTransition(duration=fadeLength)
 

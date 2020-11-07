@@ -11,4 +11,4 @@ class Audio:
 
     def play(self):
         self.sound.play()
-        Clock.schedule_interval(self.loop, self.sound.length)
+        Clock.schedule_interval(self.loop, self.sound.length + 5)
