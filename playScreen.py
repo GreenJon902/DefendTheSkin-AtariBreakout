@@ -13,6 +13,8 @@ class PlayScreen(Screen):
         for body in anti_bodies:
             body.remove()
 
+        anti_bodies.clear()
+
         self.ball = self.ids["Ball"]
         self.bind(size=self.ball.update_size)
 

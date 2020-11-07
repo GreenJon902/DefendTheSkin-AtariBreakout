@@ -59,11 +59,21 @@ class Body(Widget):
             self.direction = (int(random() * antiBodyDirectionChangeMax2) +
                               self.direction - antiBodyDirectionChangeMax) % 360
 
-            if 0 >= self.center_x >= self.parent.width:
+            if 0 >= self.center_x:
                 self.direction = (self.direction + 180) % 360
+                self.x = 0
 
-            elif 0 >= self.center_y >= (self.parent.height * bgSkinBottom):
+            elif self.center_x >= self.parent.width:
                 self.direction = (self.direction + 180) % 360
+                self.right = self.parent.width
+
+            elif 0 >= self.center_y:
+                self.direction = (self.direction + 180) % 36
+                self.y = 0
+
+            elif self.center_y >= (self.parent.height * bgSkinBottom):
+                self.direction = (self.direction + 180) % 36
+                self.top = (self.parent.height * bgSkinBottom)
 
             if self.parent.ball.collide_widget(self):
                 self.remove()
