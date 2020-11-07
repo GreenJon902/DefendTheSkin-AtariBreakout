@@ -69,4 +69,7 @@ class PlayScreen(Screen):
 
     def regen(self):
         create_anti(self, (self.width / 2, self.height / 2))
-        self.bigBrick.exit()
+        try:
+            self.bigBrick.exit()
+        except KeyError:
+            pass

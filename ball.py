@@ -126,7 +126,7 @@ class Ball(Widget):
 
         if self.top >= self.parent.height * bgSkinBottom:
             # AtariGrid Y
-            shouldBreak = False
+            canBrickBounce = True
 
             for brickX in range(atariGridShape[0]):
                 for brickY in range(self.atariGrid[brickX]):
@@ -135,15 +135,12 @@ class Ball(Widget):
                     y = self.atariGridYCoords[atariGridShape[1] - brickY - 1]
 
                     if ((x <= self.x <= x2) or (x <= self.right <= x2)) and self.top >= y:
-                        shouldBreak = True
-                        self.top = y-1
                         self.hideBrickFunc(brickX, atariGridShape[1] - brickY - 1)
 
-                        self.bounce(0)
+                        if canBrickBounce:
+                            self.bounce(0)
 
-
-                if shouldBreak:
-                    break
+                        canBrickBounce = False
 
         # Sides
         if self.x <= 0:
