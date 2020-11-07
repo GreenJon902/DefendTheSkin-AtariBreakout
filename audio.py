@@ -4,7 +4,7 @@ from kivy.core.audio import SoundLoader
 
 class Audio:
     def __init__(self):
-        self.sound = SoundLoader.load("Resources/backingTrack.mp3")
+        self.sound = SoundLoader.load("backingTrack.mp3")
 
     def loop(self, _=None):
         self.sound.play()
