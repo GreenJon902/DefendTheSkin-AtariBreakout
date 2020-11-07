@@ -6,6 +6,7 @@ from kivy.animation import Animation
 from kivy.clock import Clock
 from kivy.core.window import Window
 from kivy.uix.widget import Widget
+from kivy.vector import Vector
 
 from configurables import ballSize, bgSkinBottom, atariGridPos, atariGridSize, atariGridShape, \
     ballSpeedUp, ballStartSpeed
@@ -35,12 +36,11 @@ def round_up_to_set_out_puts(n, outputs):
 class Ball(Widget):
     #  Physics
     velocityX = 1 if randint(0, 1) == 1 else -1
-    velocityY = 1
+    velocityY = -1
     speed = ballStartSpeed
 
     def move(self):
-        self.center_x += self.speed * self.velocityX
-        self.center_y -= self.speed * self.velocityY
+        self.pos = (Vector(self.velocityX, self.velocityY) * ballStartSpeed + self.pos)
 
     # Ball
     def __init__(self, *args, **kwargs):
@@ -109,12 +109,12 @@ class Ball(Widget):
         if self.canBounce and self.collide_widget(self.racket):
             self.canBounce = False
 
-            diff = randint(-1, 1)
-
-            self.velocityY *= -1
-            self.velocityX += diff
-
-            self.speed *= ballSpeedUp
+            vx, vy = self.velocityX, self.velocityY
+            offset = (self.center_x - self.racket.center_x) / (self.racket.width / 2)
+            bounced = Vector(vx, vy * -1)
+            vel = bounced * ballSpeedUp
+            self.velocityX, self.velocityY = vel.x, vel.y + offset
+            self.canBounce = False
 
         elif not self.collide_widget(self.racket) and not self.canBounce:
             self.canBounce = True
