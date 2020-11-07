@@ -42,63 +42,63 @@
             size_hint: 1, 1-configurables.bgSkinBottom
 
             Button:
-                id: HowToPlayButton
+                id: HowToPlay
 
                 text: "How To Play"
                 font_name: configurables.bgFontName
                 font_size: 40
                 bold: True
 
-                background_color: 0, 0, 0, 0
+                background_color: 1, 1, 1, 0
                 color: 0, 0, 0
 
-                on_release: print("fe")
+                on_release: MainMenuScreen.further_buttons_set_screen("HowToPlay")
 
                 canvas.before:
                     Color:
-                        rgb: 1, 1, 1
+                        rgb: self.background_color[0], self.background_color[1], self.background_color[2]
 
                     Rectangle:
                         pos: self.pos
                         size: self.size
 
             Button:
-                id: HowItsRelatedToTheSkinImmuneSystemScreen
+                id: HowIsItRelatedToTheSkinImmuneSystem
 
                 text: "How Its Related To The Skin Immune System"
                 font_name: configurables.bgFontName
                 font_size: 25
                 bold: True
 
-                background_color: 0, 0, 0, 0
+                background_color: 1, 1, 1, 0
                 color: 0, 0, 0
 
-                on_release: print("fe")
+                on_release: MainMenuScreen.further_buttons_set_screen("HowIsItRelatedToTheSkinImmuneSystem")
 
                 canvas.before:
                     Color:
-                        rgb: 1, 1, 1
+                        rgb: self.background_color[0], self.background_color[1], self.background_color[2]
 
                     Rectangle:
                         pos: self.pos
                         size: self.size
 
             Button:
-                id: FurtherReadingButton
+                id: FurtherReading
 
                 text: "Further Reading"
                 font_name: configurables.bgFontName
                 font_size: 40
                 bold: True
 
-                background_color: 0, 0, 0, 0
+                background_color: 1, 1, 1, 0
                 color: 0, 0, 0
 
-                on_release: print("fe")
+                on_release: MainMenuScreen.further_buttons_set_screen("FurtherReading")
 
                 canvas.before:
                     Color:
-                        rgb: 1, 1, 1
+                        rgb: self.background_color[0], self.background_color[1], self.background_color[2]
 
                     Rectangle:
                         pos: self.pos
@@ -132,17 +132,36 @@
 
 <TextScreen>:
     Label:
+        on_size: print(self.size, self.pos, self.text_size)
+
+        pos_hint: {"x":0, "y": 0}
+        size_hint: 1, 1
+
         text: self.parent.text
         font_name: configurables.bgFontName
         font_size: 25
         bold: True
-        valign: "center"
+        valign: "top"
         halign: "center"
         multiline: True
-        text_size: self.width * configurables.bgExplainerTextWidth, self.height
+        text_size: self.width * 0.9, self.height
 
-        pos_hint: {"x":0, "top": 1}
-        size_hint: 1, 1
+    Label:
+        on_size: print(self.size, self.pos, self.text_size)
+
+        pos_hint: {"x":0, "y": 0.2}
+        size_hint: 1, None
+
+        text: "Click to return to menu screen. "
+        font_name: configurables.bgFontName
+        font_size: 25
+        bold: True
+        valign: "bottom"
+        halign: "center"
+        multiline: True
+        text_size: self.width * 0.9, self.height
+
+
 
 
 <ScoreScreen>:

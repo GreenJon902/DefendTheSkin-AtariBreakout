@@ -89,6 +89,8 @@ howToPlayScreenText = "How To Play? \n \n The aim of the game is to make a path 
                       "they touch the racket then you loose a life, but don't worry both the virus and some special " \
                       "balls will destroy anti bodies on impact. These special balls explode from cells that you " \
                       "destroy. To destroy a cell you simply have to hit it with the virus and then slide the racket " \
-                      "into the zoomed in part of the cell that will appear at the bottom of your screen "
-howItsRelatedToTheSkinImmuneSystemScreenText = ""
+                      "into the zoomed in part of the cell that will appear at the bottom of your screen."
+
+howIsItRelatedToTheSkinImmuneSystemScreenText = ""
 textPadding = 0.01
+buttonColorChange = 0.7, 0.7, 0.7, 0
