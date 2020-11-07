@@ -34,14 +34,13 @@ def round_up_to_set_out_puts(n, outputs):
 
 class Ball(Widget):
     #  Physics
-    direction = -45 if randint(0, 1) == 0 else 45
+    velocityX = 1 if randint(0, 1) == 1 else -1
+    velocityY = 1
     speed = ballStartSpeed
 
     def move(self):
-        direction_radians = math.radians(self.direction)
-
-        self.center_x += self.speed * math.sin(direction_radians)
-        self.center_y -= self.speed * math.cos(direction_radians)
+        self.center_x += self.speed * self.velocityX
+        self.center_y -= self.speed * self.velocityY
 
     # Ball
     def __init__(self, *args, **kwargs):
@@ -101,12 +100,6 @@ class Ball(Widget):
 
         Clock.schedule_interval(self.update, 0)
 
-    def bounce(self, diff):
-        self.speed *= ballSpeedUp
-
-        self.direction = (180 - self.direction) % 360
-        self.direction -= diff
-
     def update(self, _=None):
         self.move()
 
@@ -116,17 +109,19 @@ class Ball(Widget):
         if self.canBounce and self.collide_widget(self.racket):
             self.canBounce = False
 
-            offset = (self.center_x - self.racket.center_x) / (self.racket.width / 2)
-            self.bounce(offset)
+            diff = randint(-1, 1)
 
-            #self.velocity_y *= -1
+            self.velocityY *= -1
+            self.velocityX += diff
+
+            self.speed *= ballSpeedUp
 
         elif not self.collide_widget(self.racket) and not self.canBounce:
             self.canBounce = True
 
         if self.top >= self.parent.height * bgSkinBottom:
             # AtariGrid Y
-            canBrickBounce = True
+            shouldBreak = False
 
             for brickX in range(atariGridShape[0]):
                 for brickY in range(self.atariGrid[brickX]):
@@ -135,20 +130,24 @@ class Ball(Widget):
                     y = self.atariGridYCoords[atariGridShape[1] - brickY - 1]
 
                     if ((x <= self.x <= x2) or (x <= self.right <= x2)) and self.top >= y:
+                        shouldBreak = True
+                        self.top = y-1
                         self.hideBrickFunc(brickX, atariGridShape[1] - brickY - 1)
+                        self.velocityY *= -1
 
-                        if canBrickBounce:
-                            self.bounce(0)
+                        pass
 
-                        canBrickBounce = False
+
+                if shouldBreak:
+                    break
 
         # Sides
         if self.x <= 0:
-            self.direction = (360 - self.direction) % 360
+            self.velocityX *= -1
             self.x = 1
 
         elif self.right >= Window.width:
-            self.direction = (360 - self.direction) % 360
+            self.velocityX *= -1
             self.right = Window.width
 
         # Bottom
