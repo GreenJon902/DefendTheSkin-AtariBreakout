@@ -132,8 +132,6 @@
 
 <TextScreen>:
     Label:
-        on_size: print(self.size, self.pos, self.text_size)
-
         pos_hint: {"x":0, "y": 0}
         size_hint: 1, 1
 
@@ -147,8 +145,6 @@
         text_size: self.width * 0.9, self.height
 
     Label:
-        on_size: print(self.size, self.pos, self.text_size)
-
         pos_hint: {"x":0, "y": 0.2}
         size_hint: 1, None
 

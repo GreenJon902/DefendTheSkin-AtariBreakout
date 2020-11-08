@@ -12,6 +12,7 @@ class PlayScreen(Screen):
 
         for body in anti_bodies:
             body.remove()
+            del body
 
         anti_bodies.clear()
 
@@ -34,12 +35,18 @@ class PlayScreen(Screen):
         self.ball.looseHeart = self.health.loose
         self.racket.looseHeart = self.health.loose
 
+        self.antiClock = None
+
     def on_enter(self):
         self.atariBricks.open()
         self.ball.update_size()
 
-        Clock.schedule_interval(lambda _=None: create_anti(self, (self.width / 2, self.height / 2)),
-                                antiBodyCreationTime)
+        self.antiClock = Clock.schedule_interval(lambda _=None: create_anti(self, (self.width / 2, self.height / 2)),
+                                                 antiBodyCreationTime)
+
+    def on_leave(self, *args):
+        self.antiClock.cancel()
+        self.antiClock = None
 
     def atari_opening_done(self):
         self.ball.appear(self.ball_opening_done)
@@ -54,14 +61,15 @@ class PlayScreen(Screen):
             self.atariBricks.hide_brick(*pos)
             self.parent.score += 1
 
-            create_antianti(self, ((Window.size[0] * atariGridSize[0] / atariGridShape[0]) * pos[0] + ((Window.size[0] * atariGridSize[0] / atariGridShape[0])/2) +
+            create_antianti(self, ((Window.size[0] * atariGridSize[0] / atariGridShape[0]) * pos[0] + (
+                        (Window.size[0] * atariGridSize[0] / atariGridShape[0]) / 2) +
                                    Window.width * atariGridPos["x"],
-                                   (Window.size[1] * atariGridSize[1] / atariGridShape[1]) * pos[1] + ((Window.size[1] * atariGridSize[1] / atariGridShape[1])/2) +
+                                   (Window.size[1] * atariGridSize[1] / atariGridShape[1]) * pos[1] + (
+                                               (Window.size[1] * atariGridSize[1] / atariGridShape[1]) / 2) +
                                    Window.height * atariGridPos["y"]))
 
         else:
             create_anti(self, (self.width / 2, self.height / 2))
-            print("fe")
 
             self.bigBrick.racket_missed()
 

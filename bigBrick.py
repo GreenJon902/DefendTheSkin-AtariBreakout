@@ -54,7 +54,6 @@ class BigBrick(Widget):
                                 "holePos": randint(0, int(self.width - (self.width * racketSize[0])))})
 
         if length == 0:
-            print("None")
             self.enter()
 
     def update_queue_sizes(self, _=None, _2=None):

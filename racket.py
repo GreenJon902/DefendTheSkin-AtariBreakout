@@ -16,12 +16,13 @@ class Racket(Widget):
 
         self.doesBrickFitCallback = True
         self.bigBrick = None
-        self.antiBodies = list()
+        self.antiBodies = None
         self.looseHeart = None
 
         Clock.schedule_interval(self.are_anti_bodies_touching, 0)
 
     def are_anti_bodies_touching(self, _):
+        print(self.antiBodies)
         for body in self.antiBodies:
             if self.collide_widget(body):
                 self.looseHeart()

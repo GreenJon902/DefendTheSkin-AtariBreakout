@@ -21,7 +21,8 @@ class Body(Widget):
     def __init__(self, direction=int(random() * 360), *args, **kwargs):
         super(Body, self).__init__(*args, **kwargs)
 
-        self.size_hint = bodyRadius, None
+        self.size_hint = None, None
+
         self.move_clock = Clock.schedule_interval(self.move, 0)
         self.direction = direction
 
@@ -39,9 +40,18 @@ class Body(Widget):
             anti_bodies.remove(self)
         except ValueError:
             pass
-        del self
 
     def update_canvas(self, _=None, _2=None):
+        try:
+            if min(self.parent.width, self.parent.height) == self.parent.width:
+                self.size = self.parent.width * bodyRadius, self.parent.width * bodyRadius
+            else:
+                self.size = self.parent.height * bodyRadius, self.parent.height * bodyRadius
+
+        except AttributeError:
+            pass
+
+
         self.canvas.clear()
         with self.canvas:
             StencilPush()
@@ -91,10 +101,6 @@ class Body(Widget):
 
         self.center_x += bodyMoveSpeed * math.sin(direction_radians)
         self.center_y -= bodyMoveSpeed * math.cos(direction_radians)
-
-    def on_width(self, _=None, _2=None):
-        self.height = self.width
-        self.update_canvas()
 
 
 def create_anti(parent, pos):
