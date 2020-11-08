@@ -24,7 +24,7 @@ class DefendTheSkin(App):
 
 
 if __name__ == '__main__':
-    Builder.load_file("kv.kv")
+    Builder.load_file("Resources/kv.kv")
 
     defendTheSkin = DefendTheSkin()
     defendTheSkin.run()
