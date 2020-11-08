@@ -1,3 +1,7 @@
+from kivy import Config
+Config.set('input', 'mouse', 'mouse,disable_multitouch')
+
+
 from kivy.app import App
 from kivy.core.window import Window
 from kivy.lang import Builder
