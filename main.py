@@ -21,6 +21,8 @@ class DefendTheSkin(App):
 
         Window.size = 700, 1000
 
+        self.icon = 'Resources/icon.png'
+
         self.audio.play()
 
         return ScreenManager()
