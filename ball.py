@@ -167,4 +167,6 @@ class Ball(Widget):
         self.atariGrid[x] -= 1
 
     def regen(self, _=None, _2=None):
+        self.velocityX = 1 if randint(0, 1) == 1 else -1
+        self.velocityY = -1
         self.canLooseHealth = True
