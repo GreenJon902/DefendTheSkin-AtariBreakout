@@ -39,7 +39,9 @@ class Body(Widget):
             self.move_clock.cancel()
             anti_bodies.remove(self)
         except ValueError:
-            pass
+            Logger.warn("Game: Antibody not working")
+        except AttributeError:
+            Logger.warn("Game: Antibody not working")
 
     def update_canvas(self, _=None, _2=None):
         try:
