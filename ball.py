@@ -53,6 +53,7 @@ class Ball(Widget):
         self.looseHeart = None
         self.canBounce = True
         self.canLooseHealth = True
+        self.open_score_screen = None
         self.atariGrid = {}
         self.atariGridXCoords = {}
         self.atariGridRightCoords = {}
@@ -155,6 +156,11 @@ class Ball(Widget):
                 self.center = self.parent.width / 2, self.parent.height / 2
                 self.appear(self.regen)
                 self.canLooseHealth = False
+
+
+        # Top
+        if self.y >= self.parent.height:
+            self.open_score_screen("Win")
 
 
     def remove(self, x):

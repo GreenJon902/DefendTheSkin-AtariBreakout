@@ -2,6 +2,7 @@ from kivy.animation import Animation
 from kivy.properties import NumericProperty
 from kivy.uix.widget import Widget
 
+from bodies import anti_bodies
 from configurables import heartSize, healthDistance, healthLeaveTime, healthGrowSize
 
 
@@ -11,7 +12,7 @@ class Health(Widget):
     def __init__(self, *args, **kwargs):
         super(Health, self).__init__(*args, **kwargs)
 
-        self.dead = None
+        self.open_score_screen = None
 
         self.bind(health=self.update)
 
@@ -67,11 +68,17 @@ class Health(Widget):
                           x=self.ids["heart_1"].x - ((self.parent.width * heartSize * healthGrowSize) / 4),
                           y=self.ids["heart_1"].y - ((self.parent.width * heartSize * healthGrowSize) / 4),
                           duration=healthLeaveTime)
-            a.bind(on_complete=self.dead)
+            a.bind(on_complete=lambda _=None, _2=None, _3=None: self.open_score_screen("Loose"))
             a.start(self.ids["heart_1"])
 
 
     def loose(self):
+        for body in anti_bodies:
+            body.remove()
+            del body
+
+        anti_bodies.clear()
+
         self.health -= 1
         i = False if self.health <= 0 else True
         return i

@@ -25,7 +25,8 @@ class ScreenManager(Sm):
         self.add_widget(self.MainMenu)
 
         self.PlayScreen = PlayScreen(name="Play")
-        self.PlayScreen.ids["Health"].dead = self.dead
+        self.PlayScreen.ids["Health"].open_score_screen = self.open_score_screen
+        self.PlayScreen.ids["Ball"].open_score_screen = self.open_score_screen
         self.add_widget(self.PlayScreen)
 
         self.ScoreScreen = ScoreScreen(name="Score")
@@ -42,11 +43,12 @@ class ScreenManager(Sm):
 
         self.transition = FadeTransition(duration=fadeLength)
 
-    def dead(self, _=None, _2=None, _3=None):
+    def open_score_screen(self, title, _=None, _2=None, _3=None):
         self.ScoreScreen.score = self.score
+        self.ScoreScreen.title = title
         self.current = "Score"
 
         self.remove_widget(self.PlayScreen)
         self.PlayScreen = PlayScreen(name="Play")
-        self.PlayScreen.ids["Health"].dead = self.dead
+        self.PlayScreen.ids["Health"].open_score_screen = self.open_score_screen
         self.add_widget(self.PlayScreen)
