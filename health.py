@@ -2,7 +2,6 @@ from kivy.animation import Animation
 from kivy.properties import NumericProperty
 from kivy.uix.widget import Widget
 
-from bodies import anti_bodies
 from configurables import heartSize, healthDistance, healthLeaveTime, healthGrowSize
 
 
@@ -73,11 +72,10 @@ class Health(Widget):
 
 
     def loose(self):
-        for body in anti_bodies:
+        for body in self.parent.AntiBodiesHolder.children:
             body.remove()
-            del body
 
-        anti_bodies.clear()
+        self.parent.AntiBodiesHolder.clear_widgets()
 
         self.health -= 1
         i = False if self.health <= 0 else True

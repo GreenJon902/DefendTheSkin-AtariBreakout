@@ -10,21 +10,22 @@ from kivy.uix.widget import Widget
 from configurables import bodyRadius, bodyColors, antiantiBodyAmount, antiBodyDirectionChangeMax, \
     antiBodyDirectionChangeMax2, bodyMoveSpeed, bgSkinBottom, antiBodyCreationAmount
 
-anti_bodies = list()
-
 
 class Body(Widget):
     type = StringProperty("anti")
     types = "anti", "antianti"
     direction = 0
 
-    def __init__(self, direction=int(random() * 360), *args, **kwargs):
+    def __init__(self, looseHealth, AntiBodiesHolder, direction=int(random() * 360), *args, **kwargs):
         super(Body, self).__init__(*args, **kwargs)
 
         self.size_hint = None, None
 
         self.move_clock = Clock.schedule_interval(self.move, 0)
         self.direction = direction
+
+        self.looseHealth = looseHealth
+        self.AntiBodiesHolder = AntiBodiesHolder
 
         self.bind(pos=self.update_canvas)
 
@@ -34,14 +35,12 @@ class Body(Widget):
             Clock.schedule_once(self.remove, 0)
 
     def remove(self, _=None):
-        try:
-            self.parent.remove_widget(self)
-            self.move_clock.cancel()
-            anti_bodies.remove(self)
-        except ValueError:
-            Logger.warn("Game: Antibody not working")
-        except AttributeError:
-            Logger.warn("Game: Antibody not working")
+        self.canvas.clear()
+        self.move_clock.cancel()
+        self.parent.remove_widget(self)
+
+        del self
+
 
     def update_canvas(self, _=None, _2=None):
         try:
@@ -67,6 +66,7 @@ class Body(Widget):
             StencilPop()
 
     def move(self, _=None, _2=None):
+
         if self.type == "anti":
             self.direction = (int(random() * antiBodyDirectionChangeMax2) +
                               self.direction - antiBodyDirectionChangeMax) % 360
@@ -90,12 +90,16 @@ class Body(Widget):
             if self.parent.ball.collide_widget(self):
                 self.remove()
 
+            elif self.parent.racket.collide_widget(self):
+                self.looseHealth()
+                self.remove()
+
         else:
             if not self.parent.collide_point(self.x, self.y):
                 self.remove()
 
             else:
-                for body in anti_bodies:
+                for body in self.AntiBodiesHolder.children:
                     if self.collide_widget(body):
                         body.remove()
 
@@ -107,14 +111,12 @@ class Body(Widget):
 
 def create_anti(parent, pos):
     for body in range(antiBodyCreationAmount):
-        b = Body(type="anti", pos=pos)
+        b = Body(parent.health.loose, parent.AntiBodiesHolder, type="anti", pos=pos)
         parent.add_widget(b)
-
-        anti_bodies.append(b)
 
 
 def create_antianti(parent, pos):
     directionChange = 1 / antiantiBodyAmount * 360
 
     for n in range(antiantiBodyAmount):
-        parent.add_widget(Body(type="antianti", direction=directionChange * n, pos=pos))
+        parent.add_widget(Body(parent.health.loose, parent.AntiBodiesHolder, type="antianti", direction=directionChange * n, pos=pos))

@@ -2,19 +2,13 @@ from kivy.clock import Clock
 from kivy.core.window import Window
 from kivy.uix.screenmanager import Screen
 
-from bodies import create_anti, create_antianti, anti_bodies
+from bodies import create_anti, create_antianti
 from configurables import atariGridSize, atariGridPos, atariGridShape, antiBodyCreationTime
 
 
 class PlayScreen(Screen):
     def __init__(self, *args, **kwargs):
         super(PlayScreen, self).__init__(*args, **kwargs)
-
-        for body in anti_bodies:
-            body.remove()
-            del body
-
-        anti_bodies.clear()
 
         self.ball = self.ids["Ball"]
         self.bind(size=self.ball.update_size)
@@ -25,12 +19,19 @@ class PlayScreen(Screen):
         self.racket = self.ids["Racket"]
         self.racket.doesBrickFitCallback = self.brick_fit
         self.racket.bigBrick = self.bigBrick
-        self.racket.antiBodies = anti_bodies
 
         self.atariBricks = self.ids["AtariBricks"]
 
         self.health = self.ids["Health"]
         self.bind(size=self.health.update)
+
+        self.AntiBodiesHolder = self.ids["AntiBodiesHolder"]
+
+        for body in self.AntiBodiesHolder.children:
+            body.remove()
+            del body
+
+        self.AntiBodiesHolder.clear_widgets()
 
         self.ball.looseHeart = self.health.loose
         self.racket.looseHeart = self.health.loose
