@@ -52,3 +52,4 @@ class ScreenManager(Sm):
         self.PlayScreen = PlayScreen(name="Play")
         self.PlayScreen.ids["Health"].open_score_screen = self.open_score_screen
         self.add_widget(self.PlayScreen)
+        self.score = 0
