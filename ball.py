@@ -1,5 +1,4 @@
 import bisect
-import math
 from random import randint
 
 from kivy.animation import Animation
