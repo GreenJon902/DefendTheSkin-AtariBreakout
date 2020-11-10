@@ -22,6 +22,7 @@ class ScreenManager(Sm):
         self.score = 0
 
         self.MainMenu = MainMenuScreen(name="MainMenu")
+        self.MainMenu.sm = self
         self.add_widget(self.MainMenu)
 
         self.PlayScreen = PlayScreen(name="Play")

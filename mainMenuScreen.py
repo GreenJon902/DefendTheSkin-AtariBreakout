@@ -8,6 +8,8 @@ class MainMenuScreen(Screen):
     def __init__(self, *args, **kwargs):
         super(MainMenuScreen, self).__init__(*args, **kwargs)
 
+        self.sm = None
+
         Window.bind(mouse_pos=self.on_mouse_pos)
 
     def on_mouse_pos(self, _, pos):
@@ -39,4 +41,4 @@ class MainMenuScreen(Screen):
         self.parent.current = "Play"
 
     def further_buttons_set_screen(self, s):
-        self.parent.current = s
+        self.sm.current = s
