@@ -41,61 +41,46 @@
             pos_hint: {"x": 0, "top": configurables.bgSkinBottom}
             size_hint: 1, 1-configurables.bgSkinBottom
 
-            Button:
+            Image:
                 id: HowToPlay
 
-                text: "How To Play"
-                font_name: configurables.bgFontName
-                font_size: 40
+                size_hint: 1, 1
+                source: "Resources/howToPlayButtonImage.png"
 
-                background_color: 1, 1, 1, 0
-                color: 0, 0, 0
-
-                on_release: MainMenuScreen.further_buttons_set_screen("HowToPlay")
 
                 canvas.before:
                     Color:
-                        rgb: self.background_color[0], self.background_color[1], self.background_color[2]
+                        rgb: root.b1Color
 
                     Rectangle:
                         pos: self.pos
                         size: self.size
 
-            Button:
+            Image:
                 id: HowIsItRelatedToTheSkinImmuneSystem
 
-                text: "How Its Related To The Skin Immune System"
-                font_name: configurables.bgFontName
-                font_size: 25
+                size_hint: 1, 1
+                source: "Resources/howItsRelatedToTheSkinImmuneSystemButtonImage.png"
 
-                background_color: 1, 1, 1, 0
-                color: 0, 0, 0
-
-                on_release: MainMenuScreen.further_buttons_set_screen("HowIsItRelatedToTheSkinImmuneSystem")
 
                 canvas.before:
                     Color:
-                        rgb: self.background_color[0], self.background_color[1], self.background_color[2]
+                        rgb: root.b2Color
 
                     Rectangle:
                         pos: self.pos
                         size: self.size
 
-            Button:
+            Image:
                 id: FurtherReading
 
-                text: "Further Reading"
-                font_name: configurables.bgFontName
-                font_size: 40
+                size_hint: 1, 1
+                source: "Resources/furtherReadingButtonImage.png"
 
-                background_color: 1, 1, 1, 0
-                color: 0, 0, 0
-
-                on_release: MainMenuScreen.further_buttons_set_screen("FurtherReading")
 
                 canvas.before:
                     Color:
-                        rgb: self.background_color[0], self.background_color[1], self.background_color[2]
+                        rgb: root.b3Color
 
                     Rectangle:
                         pos: self.pos

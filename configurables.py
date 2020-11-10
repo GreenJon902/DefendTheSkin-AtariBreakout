@@ -5,7 +5,7 @@ bgSkinColor1 = 1, 0.70196078431, 0
 bgSkinColor2 = 0.94509803921, 0.66274509803, 0
 bgSkinBottom = 0.7
 bgSkinTop = 0.9
-bgFontName = "Resources/comicSans.ttf"
+bgFontName = "Resources/minecraft.ttf"
 bgExplainerTextY = 0.7
 bgExplainerTextWidth = 0.9
 atariGridShape = 6, 5
@@ -95,4 +95,4 @@ howToPlayScreenText = "How To Play? \n \n The down arrow = For sliding the racke
 howIsItRelatedToTheSkinImmuneSystemScreenText = ""
 TextFontName = "Resources/comicSans.ttf"
 textPadding = 0.01
-buttonColorChange = 0.7, 0.7, 0.7, 0
+buttonColorChange = 0.7, 0.7, 0.7
