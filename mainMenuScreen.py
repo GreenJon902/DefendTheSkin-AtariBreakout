@@ -15,8 +15,6 @@ class MainMenuScreen(Screen):
 
         self.sm = None
 
-
-
         Window.bind(mouse_pos=self.on_mouse_pos)
 
     def on_mouse_pos(self, _, pos):
@@ -44,8 +42,19 @@ class MainMenuScreen(Screen):
         elif not self.ids["FurtherReading"].collide_point(*pos):
             self.b3Color = 1, 1, 1
 
-    def start_game(self):
-        self.parent.current = "Play"
+    def on_touch_down(self, touch):
+        super(MainMenuScreen, self).on_touch_down(touch)
+        
+        if self.ids["HowToPlay"].collide_point(*touch.pos):
+            self.sm.current = "HowToPlay"
 
-    def further_buttons_set_screen(self, s):
-        self.sm.current = s
+        elif self.ids["HowIsItRelatedToTheSkinImmuneSystem"].collide_point(*touch.pos):
+            self.sm.current = "HowIsItRelatedToTheSkinImmuneSystem"
+
+        elif self.ids["FurtherReading"].collide_point(*touch.pos):
+            self.sm.current = "FurtherReading"
+
+
+    def start_game(self):
+        self.sm.current = "Play"
+
