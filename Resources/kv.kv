@@ -116,31 +116,24 @@
 
 
 <TextScreen>:
-    Label:
-        pos_hint: {"x":0, "y": 0}
+    ScrollView:
         size_hint: 1, 1
+        do_scroll_x: False
+        do_scroll_y: True
 
-        text: self.parent.text
-        font_name: configurables.TextFontName
-        font_size: 20
-        bold: True
-        valign: "top"
-        halign: "center"
-        multiline: True
-        text_size: self.width * 0.9, self.height
+        Label:
+            pos_hint: {"x":0, "y": 0}
+            size_hint: 1, 2
 
-    Label:
-        pos_hint: {"x":0, "y": 0.1}
-        size_hint: 1, None
+            text: root.text
+            font_name: configurables.TextFontName
+            font_size: 20
+            bold: True
+            valign: "top"
+            halign: "center"
+            multiline: True
+            text_size: self.width * 0.9, self.height
 
-        text: "Click to return to menu screen. "
-        font_name: configurables.TextFontName
-        font_size: 20
-        bold: True
-        valign: "bottom"
-        halign: "center"
-        multiline: True
-        text_size: self.width * 0.9, self.height
 
 
 

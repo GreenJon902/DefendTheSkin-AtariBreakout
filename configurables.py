@@ -72,7 +72,7 @@ bigBrickMoveTime = 0.5
 bigBrickFlashTime = 3
 bigBrickFlashTransition = "out_expo"
 healthDistance = 0.01
-heartSize = 0.1 - (healthDistance*2)
+heartSize = 0.1 - (healthDistance * 2)
 healthGrowSize = 1.5
 healthLeaveTime = 0.5
 bodyRadius = 0.02
@@ -83,16 +83,48 @@ antiBodyDirectionChangeMax2 = 100
 antiBodyCreationAmount = 3
 antiBodyCreationTime = 10
 antiantiBodyAmount = 10
-furtherReadingScreenText = ""
+furtherReadingScreenText = "Further Reading \n \n Source 1: https://dermnetnz.org/topics/skin-immune-system/ By Dr " \
+                           "Yuliya Velykoredko,\n " \
+                           "Dermatology Resident, and Dr Michal Bohdanowicz, Dermatology Resident, Source 2: " \
+                           "https://kidshealth.org/en/teens/immune.html \n \n Definitions; T cell: plays a key role in " \
+                           "detecting a virus Antigen: a foreign substance B cells: B cells produce antibodies. " \
+                           "Complement: Plasma proteins that fight viruses. \n \n The immune system or Skin associated " \
+                           "lymphoid tissue or SALT has an external physical barrier preventing infection and toxins " \
+                           "from entering externally. A T cell detects a virus or antigen immediately. B cells " \
+                           "produce antibodies which bind itself to a virus, by doing this it prevents infections. " \
+                           "Antibodies also stay in the body after fighting a virus, It almost keeps a database of " \
+                           "what to do when the virus attacks again, this why your unlikely to get the same virus " \
+                           "twice. We can see this in the covid19 herd immunity ( adaptive immunity). plan. This is " \
+                           "also why the antibody test works the way it does. Antibodies can also activate " \
+                           "complement, which can help kill the viruses. One of the most important things we have in " \
+                           "our time, is vaccines. Vaccines introduce us to a weaker version of a virus. Once the " \
+                           "immune system acts, antibodies remember what to do if the body is introduced to that " \
+                           "virus again." \
+                           "  \n \n \n Double tap to return to menu screen. "
 howToPlayScreenText = "How To Play? \n \n The down arrow = For sliding the racket into the cell \n \n The Mouse = " \
                       "Sliding the racket \n \n \n The aim of the game is to make a path through the cells using the " \
                       "virus which you bounce with your racket. There will also be blue antibodies flying around and " \
                       "if they touch the racket then you loose a life, but don't worry both the virus and some " \
                       "special balls will destroy anti bodies on impact. These special balls explode from cells that " \
                       "you destroy. To destroy a cell you simply have to hit it with the virus and then slide the " \
-                      "racket into the zoomed in part of the cell that will appear at the bottom of your screen. "
+                      "racket into the zoomed in part of the cell that will appear at the bottom of your screen. " \
+                      "  \n \n \n Double tap to return to menu screen. "
 
-howIsItRelatedToTheSkinImmuneSystemScreenText = ""
+howIsItRelatedToTheSkinImmuneSystemScreenText = "How It Is Related To The Immune System? \n \n Even though this is a " \
+                                                "2d arcade game, we have tried to keep it as close to life as we can. " \
+                                                "For example, the aim of the game is to infiltrate the skin, " \
+                                                "without alerting the immune system. Your main foe are the " \
+                                                "antibodies, which in the human body, can fight the viruses by " \
+                                                "attaching them self's and harming them, or by blocking the virus " \
+                                                "from infecting cells. Another thing the antibodies can do, " \
+                                                "is alert the complement, a group of plasma proteins, that will fight " \
+                                                "the virus. As you know, your goal is to destroy all cells, " \
+                                                "and enter the body, however, when you hit a cell, you need to hit " \
+                                                "the right point to correctly destroy the cell, and move on to the " \
+                                                "next. This was added to add a layer of complexity to the game, " \
+                                                "however, this is similar to a viruses way of entering a cell, " \
+                                                "by which they surf along the surface. " \
+                                                "  \n \n \n Double tap to return to menu screen. "
 TextFontName = "Resources/comicSans.ttf"
 textPadding = 0.01
 buttonColorChange = 0.7, 0.7, 0.7
