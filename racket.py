@@ -13,8 +13,17 @@ class Racket(Widget):
 
         self.canMove = True
 
+        Window.bind(on_key_down=self.key_down)
+
         self.doesBrickFitCallback = True
         self.bigBrick = None
+
+    def key_down(self, _, keycode, _2, _3, _4):
+        if not self.canMove: return
+
+        elif keycode == 274:
+            if len(self.bigBrick.brickQueue) != 0 and "y" in self.bigBrick.pos_hint:
+                self.swipe_down(*self.bigBrick.get_queue_and_ys())
 
 
     def on_touch_down(self, touch):
