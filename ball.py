@@ -103,6 +103,9 @@ class Ball(Widget):
     def update(self, _=None):
         self.move()
 
+        if self.racket.not_sliding:
+            self.racket.pos = self.pos
+
         # Hit Boxes YAY
 
         # Racket

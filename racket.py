@@ -12,6 +12,7 @@ class Racket(Widget):
         super(Racket, self).__init__(*args, **kwargs)
 
         self.canMove = True
+        self.not_sliding
 
         Window.bind(on_key_down=self.key_down)
 
