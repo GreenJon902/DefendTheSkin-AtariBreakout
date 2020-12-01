@@ -94,6 +94,7 @@ class BigBrick(Widget):
 
     def has_shown(self, _=None, _2=None):
         self.pos_hint["y"] = 0
+        self.parent.racket.big_brick_up(*self.get_queue_and_ys())
 
     def has_hidden(self, _=None, _2=None):
         del self.brickQueue[0]

@@ -12,7 +12,6 @@ class Racket(Widget):
         super(Racket, self).__init__(*args, **kwargs)
 
         self.canMove = True
-        self.not_sliding
 
         Window.bind(on_key_down=self.key_down)
 
@@ -59,6 +58,10 @@ class Racket(Widget):
             a = Animation(y=missY, duration=racketMoveTime, transition=racketMoveTransition)
             a.bind(on_complete=lambda _=None, _2=None: self.swiped(False))
             a.start(self)
+
+    def big_brick_up(self, x, hitY, missY):
+        self.x = x
+        self.swipe_down(x, hitY, missY)
 
     def swiped(self, hit):
         self.doesBrickFitCallback(hit)

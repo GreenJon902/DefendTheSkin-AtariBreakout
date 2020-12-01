@@ -1,3 +1,5 @@
+import random
+
 from kivy.animation import Animation
 from kivy.properties import NumericProperty
 from kivy.uix.widget import Widget
@@ -72,11 +74,12 @@ class Health(Widget):
 
 
     def loose(self):
-        for body in self.parent.AntiBodiesHolder.children:
-            body.remove()
+        if self.health > 1 and random.randint(1, 50) == 3:
+            for body in self.parent.AntiBodiesHolder.children:
+                body.remove()
 
-        self.parent.AntiBodiesHolder.clear_widgets()
+            self.parent.AntiBodiesHolder.clear_widgets()
 
-        self.health -= 1
-        i = False if self.health <= 0 else True
-        return i
+            self.health -= 1
+            i = False if self.health <= 0 else True
+            return i

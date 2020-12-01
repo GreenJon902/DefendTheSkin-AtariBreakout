@@ -103,7 +103,7 @@ class Ball(Widget):
     def update(self, _=None):
         self.move()
 
-        if self.racket.not_sliding:
+        if self.racket.canMove:
             self.racket.pos = self.pos
 
         # Hit Boxes YAY
@@ -112,12 +112,7 @@ class Ball(Widget):
         if self.canBounce and self.collide_widget(self.racket):
             self.canBounce = False
 
-            vx, vy = self.velocityX, self.velocityY
-            offset = (self.center_x - self.racket.center_x) / (self.racket.width / 2)
-            bounced = Vector(vx, vy * -1)
-            vel = bounced * ballSpeedUp
-            self.velocityX, self.velocityY = vel.x, vel.y + offset
-            self.canBounce = False
+            self.velocityX, self.velocityY = self.velocityX * -1, self.velocityY * -1
 
         elif not self.collide_widget(self.racket) and not self.canBounce:
             self.canBounce = True
@@ -155,10 +150,9 @@ class Ball(Widget):
 
         # Bottom
         if self.y <= 0 and self.canLooseHealth:
-            if self.looseHeart():
-                self.center = self.parent.width / 2, self.parent.height / 2
-                self.appear(self.regen)
-                self.canLooseHealth = False
+            self.center = self.parent.width / 2, self.parent.height / 2
+            self.appear(self.regen)
+            self.canLooseHealth = False
 
 
         # Top
